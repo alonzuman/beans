@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
+import UserProvider from "./contexts/UserProvider";
+import Event from "./screens/Event";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#bc6fd8',
+      main: '#b154d3',
+      dark: '#8d30af'
+    }
+  },
+  typography: {
+    h1: {
+      fontSize: '2.4rem',
+      fontWeight: 600
+    },
+    h3: {
+      fontSize: '1.4rem',
+      fontWeight: 600
+    }
+  },
+  shape: {
+    borderRadius: 12
+  }
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <UserProvider>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route path='/events/:eventID' component={Event} />
+          </Switch>
+        </BrowserRouter>
+      </UserProvider>
+    </ThemeProvider>
   );
 }
 
