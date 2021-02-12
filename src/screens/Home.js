@@ -27,14 +27,15 @@ export default function Home() {
 
   return (
     <Container maxWidth='md'>
-      <Typography style={{ marginBottom: 16 }} variant='h1'>Upcoming</Typography>
+      <Typography style={{ marginBottom: 16, marginTop: 16 }} variant='h1'>Upcoming</Typography>
       <Grid container spacing={2}>
-        {events?.map(({ id, title, hero, description, hosts, guests }) => (
-          <Grid item lg={6} md={6} sm={12} xs={12}>
+        {events?.map(({ id, title, hero, scheduledAt, hosts = [], guests = [] }) => (
+          <Grid key={id} item lg={6} md={6} sm={12} xs={12}>
             <Link to={`/events/${id}`}>
               <EventListItem
                 title={title}
                 hero={hero}
+                scheduledAt={scheduledAt}
                 members={[...hosts, ...guests]}
               />
             </Link>

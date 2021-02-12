@@ -8,7 +8,7 @@ export default function Avatar({ src = '', size = 40 }) {
       width: size,
       borderRadius: size / 2.4,
       objectFit: 'cover',
-      border: `1px solid ${palette.grey[300]}`
+      border: `2px solid ${palette.grey[100]}`
     }
   }))
 

@@ -8,20 +8,29 @@ import Home from "./screens/Home";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#bc6fd8',
-      main: '#b154d3',
-      dark: '#8d30af'
+      light: '#a157da',
+      main: '#7d44a9',
+      dark: '#592680'
     }
   },
   typography: {
     h1: {
-      fontSize: '2.4rem',
-      fontWeight: 600
+      fontSize: '2rem',
+      fontWeight: 600,
+      fontFamily: `'Poppins', sans-serif`
+    },
+    h2: {
+      fontFamily: `'Poppins', sans-serif`
     },
     h3: {
       fontSize: '1.4rem',
-      fontWeight: 600
-    }
+      fontWeight: 600,
+      fontFamily: `'Poppins', sans-serif`
+    },
+    h4: {
+      fontSize: '1.2rem',
+      fontFamily: `'Poppins', sans-serif`
+    },
   },
   shape: {
     borderRadius: 12

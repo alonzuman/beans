@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import Splash from '../screens/Splash';
 
 const UserContext = createContext(null);
@@ -12,9 +12,30 @@ export default function UserProvider({ children }) {
   useEffect(() => {
     const subscriber = auth.onAuthStateChanged(authUser => {
       if (authUser) {
-        setUser(authUser)
+        const userData = {
+          name: authUser.displayName,
+          phoneNumber: authUser.phoneNumber,
+          email: authUser.email,
+          avatar: authUser.photoURL,
+          id: authUser.uid
+        }
+
+        db.collection('users').doc(userData?.id).get()
+          .then(snapshot => {
+            if (snapshot.exists) {
+              setUser(userData)
+            } else {
+              db.collection('users').doc(userData?.id).set({
+                ...userData,
+                username: '',
+                createdAt: Date.now(),
+                updatedAt: Date.now()
+              }, { merge: true })
+                .then(() => setUser(userData))
+            }
+          })
       } else {
-        // TODO anonymous sign in
+        setUser(null)
       }
       setIsLoading(false)
     })

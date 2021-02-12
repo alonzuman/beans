@@ -19,8 +19,8 @@ export default function Header() {
       bgcolor={palette.background.default}
       borderBottom={`1px solid ${palette.grey[300]}`}
     >
-      <Link to='/'>
-        <Logo />
+      <Link style={{ lineHeight: 1 }} to='/'>
+        <Logo color={palette.primary.main} />
       </Link>
     </Box>
   )
