@@ -1,5 +1,6 @@
 import { Box, useTheme } from '@material-ui/core'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Logo from './Logo'
 
 export default function Header() {
@@ -18,7 +19,9 @@ export default function Header() {
       bgcolor={palette.background.default}
       borderBottom={`1px solid ${palette.grey[300]}`}
     >
-      <Logo />
+      <Link to='/'>
+        <Logo />
+      </Link>
     </Box>
   )
 }

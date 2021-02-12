@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import UserProvider from "./contexts/UserProvider";
 import Event from "./screens/Event";
+import Home from "./screens/Home";
 
 const theme = createMuiTheme({
   palette: {
@@ -34,6 +35,7 @@ function App() {
         <BrowserRouter>
           <Header />
           <Switch>
+            <Route path='/' exact component={Home} />
             <Route path='/events/:eventID' component={Event} />
           </Switch>
         </BrowserRouter>
