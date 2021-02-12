@@ -97,7 +97,7 @@ export default function Event({ match }) {
           <KeyboardArrowLeftIcon />
         </IconButton>
         <Hero src={event?.hero} />
-        <Box px={3}>
+        <Box px={3} py={3}>
           <Typography variant='h1'>{event?.title}</Typography>
           <Typography onClick={toggleAudience} style={{ cursor: 'pointer' }} variant='body1' color='textSecondary'>{audience?.length}{audience?.length === 1 ? ' Participant' : ' Participants'}</Typography>
           <Box my={2}>
