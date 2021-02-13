@@ -34,17 +34,18 @@ export default function UserProvider({ children }) {
                 .then(() => setUser(userData))
             }
           })
+          .finally(() => setIsLoading(false))
       } else {
         setUser(null)
+        setIsLoading(false)
       }
-      setIsLoading(false)
     })
 
     return () => subscriber;
-  }, [])
+  }, [auth])
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={{ ...user, isLoading }}>
       {isLoading && <Splash />}
       {!isLoading && children}
     </UserContext.Provider>

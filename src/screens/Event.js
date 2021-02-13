@@ -55,7 +55,7 @@ export default function Event({ match }) {
   }, [])
 
   const handleClick = async () => {
-    if (user) {
+    if (user?.id) {
       // If joined already
       const snapshot = await db.collection('events').doc(eventID).collection('audience').doc(user.id).get()
       if (snapshot.exists) {

@@ -7,7 +7,7 @@ export default function SignUpDialog({ onClose, open }) {
   return (
     <Dialog maxWidth='xs' fullWidth open={open} onClose={onClose} title='Sign up'>
       <DialogContent>
-        <SignUp />
+        <SignUp onClose={onClose} />
       </DialogContent>
     </Dialog>
   )

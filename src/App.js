@@ -2,8 +2,10 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import UserProvider from "./contexts/UserProvider";
+import ProtectedRoute from "./navigation/ProtectedRoute";
 import Event from "./screens/Event";
 import Home from "./screens/Home";
+import Profile from "./screens/Profile";
 
 const theme = createMuiTheme({
   palette: {
@@ -46,6 +48,7 @@ function App() {
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/events/:eventID' component={Event} />
+            <ProtectedRoute path='/me' component={Profile} />
           </Switch>
         </BrowserRouter>
       </UserProvider>
